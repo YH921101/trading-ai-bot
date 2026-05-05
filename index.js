@@ -42,6 +42,10 @@ async function analyzeWithAI(data) {
   return json.output?.[0]?.content?.[0]?.text || "分析失敗";
 }
 
+app.get("/", (req, res) => {
+  res.send("running");
+});
+
 app.post("/webhook", async (req, res) => {
   const data = req.body;
   const analysis = await analyzeWithAI(data);
